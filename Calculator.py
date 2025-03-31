@@ -7,8 +7,24 @@ e = Entry(root, width=35, borderwidth=5)
 e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
 def button_add(number):
+    current = e.get()
     e.delete(0, END)
-    e.insert(0,number)
+    e.insert(0,str(current) + str(number))
+
+def button_clearf():
+    e.delete(0, END)
+
+def button_addf():
+    first_number = e.get()
+    global f_num
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_equalf():
+    second_number = e.get()
+    e.delete(0, END)
+    e.insert(0, f_num + int(second_number))
+
 button_1 = Button(root, text="1", padx=40, pady=20, command= lambda: button_add(1))
 button_2 = Button(root, text="2", padx=40, pady=20, command= lambda: button_add(2))
 button_3 = Button(root, text="3", padx=40, pady=20, command= lambda: button_add(3))
@@ -19,9 +35,9 @@ button_7 = Button(root, text="7", padx=40, pady=20, command= lambda: button_add(
 button_8 = Button(root, text="8", padx=40, pady=20, command= lambda: button_add(8))
 button_9 = Button(root, text="9", padx=40, pady=20, command= lambda: button_add(9))
 button_0 = Button(root, text="0", padx=40, pady=20, command= lambda: button_add(0))
-button_plus = Button(root, text="+", padx=40, pady=20, command=lambda: button_add())
-button_equal = Button(root, text="=", padx=40, pady=20, command=lambda: button_add())
-button_clear = Button(root, text="C", padx=40, pady=20, command=lambda: button_add())
+button_plus = Button(root, text="+", padx=40, pady=20, command=lambda: button_addf())
+button_equal = Button(root, text="=", padx=40, pady=20, command=lambda: button_equalf())
+button_clear = Button(root, text="C", padx=40, pady=20, command=lambda: button_clearf())
 
 button_1.grid(row = 3, column =0)
 button_2.grid(row = 3, column =1)
